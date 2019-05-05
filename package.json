@@ -1,0 +1,24 @@
+{
+  "name": "middleware",
+  "version": "1.0.0",
+  "description": "Middleware for voting system",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PcPiotr/Voting-System-Middleware.git"
+  },
+  "author": "Piotr Janicki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PcPiotr/Voting-System-Middleware/issues"
+  },
+  "homepage": "https://github.com/PcPiotr/Voting-System-Middleware#readme"
+}
