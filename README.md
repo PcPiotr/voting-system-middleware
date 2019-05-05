@@ -10,8 +10,9 @@ Aktualnie mock middleware dla systemu głosowania elektronicznego.
  - `npm start`
 
 2.Endpointy
+
 |URL  |Method | Header  |Body  |Description  |
-|--|--|--|--|--|
+| --- | --- | --- | --- | --- |
 |/vm/getVote/{tokenId}  | GET |-  | - | Get voter's vote. |
 | /vm/vote | POST |Content-Type: application/json  |`{ "tokenId": "123", "candidateId": "345"  }`  | Vote for candidate. |
 | /vm/getCandidates |GET  | - |  -| Get available candidates. |
