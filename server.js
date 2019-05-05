@@ -5,8 +5,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+'use strict';
+var fabricClient = require('./Config/FabricClient');
+var FabricCAClient = require('fabric-ca-client');
+
 var counter1 = 1;
 var counter2 = 1;
+
 
 app.get("/vm/getVote/:tokenId", function(req, res) {
   counter1++;
