@@ -8,7 +8,7 @@ app.use(cors());
 var counter1 = 1;
 var counter2 = 1;
 
-app.get("/votingSystem/getVote/:tokenId", function(req, res) {
+app.get("/vm/getVote/:tokenId", function(req, res) {
   counter1++;
   if (counter1 % 3 == 0) {
     res.send(new Candidate(753, "Todd", "Howard", 48, "Polska Partia Przyjaciół Piwa", 1, 2));
@@ -19,7 +19,7 @@ app.get("/votingSystem/getVote/:tokenId", function(req, res) {
   }
 });
 
-app.post("/votingSystem/vote", function(req, res) {
+app.post("/vm/vote", function(req, res) {
   var tokenId = req.body.tokenId;
   var candidateId = req.body.candidateId;
 
@@ -38,7 +38,7 @@ app.post("/votingSystem/vote", function(req, res) {
   }
 });
 
-app.get("/votingSystem/getCandidates", function(req, res) {
+app.get("/vm/getCandidates", function(req, res) {
     var candidateList =  [new Candidate(565, "Daniel", "Gildenlow", 45, "Bestest Party", 1, 3), new Candidate(384, "Steven", "Wilson ", 51, "Partia Testowa", 2, 5), new Candidate(153, "Mariusz", "Duda ", 43, "Xanadu", 3, 4)];
     res.status(400).send(candidateList);
   });
