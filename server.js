@@ -10,9 +10,13 @@ var counter2 = 1;
 
 app.get("/vm/getVote/:tokenId", function (req, res) {
   counter1++;
-  if (counter1 % 2 == 0) {
-    res.send(new Candidate(753, "Todd", "Howard", 48, "Polska Partia Przyjaciół Piwa", 1, 2));
-  } else {
+  if (counter1 % 3 == 0) {
+    res.send(new Voter(req.params.tokenId));
+  }
+  else if (counter1 % 3 == 1) {
+    res.send(new Voter(req.params.tokenId, 132442));
+  }
+  else {
     res.status(400).send("Nonexistent voter");
   }
 });
@@ -57,3 +61,16 @@ class Candidate {
     this.numberOnList = numberOnList;
   }
 }
+
+class Voter {
+  constructor(voterId, candidateId) {
+    this.voterId = voterId;
+    if (candidateId === undefined) {
+      this.candidateId = null;
+    }
+    else {
+      this.candidateId = candidateId;
+    }
+  }
+}
+
