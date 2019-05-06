@@ -41,7 +41,16 @@ app.post("/vm/vote", function (req, res) {
 });
 
 app.get("/vm/getCandidates", function (req, res) {
-  var candidateList = [new Candidate(565, "Daniel", "Gildenlow", 45, "Bestest Party", 1, 3), new Candidate(384, "Steven", "Wilson ", 51, "Partia Testowa", 2, 5), new Candidate(153, "Mariusz", "Duda ", 43, "Xanadu", 3, 4)];
+  var candidateList = [
+    new Candidate(565, "Daniel", "Gildenlow", 45, "Bestest Party", 1, 1), 
+    new Candidate(561, "Jerzy", "Dudek", 42, "Bestest Party", 1, 2), 
+    new Candidate(562, "Kuba", "Jarek", 41, "Bestest Party", 1, 3), 
+    new Candidate(384, "Steven", "Wilson ", 51, "Partia Testowa", 2, 1), 
+    new Candidate(382, "Elon", "Musk ", 55, "Partia Testowa", 2, 2), 
+    new Candidate(381, "Mocked", "Candidate ", 54, "Partia Testowa", 2, 3), 
+    new Candidate(153, "Mariusz", "Duda ", 41, "Xanadu", 3, 1),
+    new Candidate(151, "Alan", "Kanala ", 48, "Xanadu", 3, 2),
+    new Candidate(157, "Reis", "Martek ", 44, "Xanadu", 3, 3)];
   res.status(400).send(candidateList);
 });
 
