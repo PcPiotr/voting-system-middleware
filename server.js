@@ -17,7 +17,9 @@ app.get("/vm/getVote/:tokenId", function (req, res) {
     res.send(new Voter(req.params.tokenId, 132442));
   }
   else {
-    res.status(400).send("Nonexistent voter");
+    res.status(400).send({
+      Message: "Nonexistent voter"
+    });
   }
 });
 
@@ -26,17 +28,25 @@ app.post("/vm/vote", function (req, res) {
   var candidateId = req.body.candidateId;
 
   if (tokenId == null) {
-    res.status(400).send("Nonexistent voter");
+    res.status(400).send({
+        Message: "Nonexistent voter"
+      });
   }
   if (candidateId == null) {
-    res.status(400).send("Nonexistent candidate");
+    res.status(400).send({
+      Message: "Nonexistent candidate"
+    });
   }
 
   counter2++;
   if (counter2 % 2 == 0) {
-    res.send("Voting went good");
+    res.send({
+      Message: "Voting went good"
+    });
   } else {
-    res.status(400).send("Nonexistent voter");
+    res.status(400).send({
+      Message: "Nonexistent voter"
+    });
   }
 });
 
