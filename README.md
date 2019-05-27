@@ -16,3 +16,7 @@ Aktualnie mock middleware dla systemu głosowania elektronicznego.
 |/vm/getVote/{tokenId}  | GET |-  | - | Get voter's vote. |
 | /vm/vote | POST |Content-Type: application/json  |`{ "tokenId": "123", "candidateId": "345"  }`  | Vote for candidate. |
 | /vm/getCandidates |GET  | - |  -| Get available candidates. |
+| /vm/getResultsByCandidates |GET  | - |  -| Get results by Candidates. |
+| /vm/getResultsByParties |GET  | - |  -| Get results by Party. |
+| /vm/beginVoting |POST  | - |  -| Start Voting. |
+| /vm/endVoting |POST  | - |  -| End Voting. |
