@@ -21,6 +21,7 @@ app.get("/vm/getVote/:tokenId", function (req, res) {
       Message: "Nonexistent voter"
     });
   }
+  
 });
 
 app.post("/vm/vote", function (req, res) {
@@ -52,17 +53,57 @@ app.post("/vm/vote", function (req, res) {
 
 app.get("/vm/getCandidates", function (req, res) {
   var candidateList = [
-    new Candidate(565, "Daniel", "Gildenlow", 45, "Bestest Party", 1, 1), 
-    new Candidate(561, "Jerzy", "Dudek", 42, "Bestest Party", 1, 2), 
-    new Candidate(562, "Kuba", "Jarek", 41, "Bestest Party", 1, 3), 
-    new Candidate(384, "Steven", "Wilson ", 51, "Partia Testowa", 2, 1), 
-    new Candidate(382, "Elon", "Musk ", 55, "Partia Testowa", 2, 2), 
-    new Candidate(381, "Mocked", "Candidate ", 54, "Partia Testowa", 2, 3), 
-    new Candidate(153, "Mariusz", "Duda ", 41, "Xanadu", 3, 1),
-    new Candidate(151, "Alan", "Kanala ", 48, "Xanadu", 3, 2),
-    new Candidate(157, "Reis", "Martek ", 44, "Xanadu", 3, 3)];
+    new Candidate(565, "Daniel", "Gildenlow", "Bestest Party", 1, 45, 1), 
+    new Candidate(561, "Jerzy", "Dudek", "Bestest Party", 1, 42, 2), 
+    new Candidate(562, "Kuba", "Jarek", "Bestest Party", 1, 43, 3), 
+    new Candidate(384, "Steven", "Wilson","Partia Testowa", 2, 53, 1), 
+    new Candidate(382, "Elon", "Musk", "Partia Testowa", 2, 55, 2), 
+    new Candidate(381, "Mocked", "Candidate ","Partia Testowa", 2, 52,3), 
+    new Candidate(153, "Mariusz", "Duda ", "Xanadu", 3, 41, 1),
+    new Candidate(151, "Alan", "Kanala ", "Xanadu", 3, 48, 2),
+    new Candidate(157, "Reis", "Martek ", "Xanadu", 3, 44, 3)];
   res.status(400).send(candidateList);
 });
+
+app.get("/vm/getResultsByCandidates", function (req, res) {
+  var candidateList = [
+    new CandidateResult(1,14), 
+    new CandidateResult(2,63),
+    new CandidateResult(3,24), 
+    new CandidateResult(4,154)];
+  res.status(400).send(candidateList);
+});
+
+app.get("/vm/getResultsByParties", function (req, res) {
+  var partiesList = [
+    new PartyResult(1,52), 
+    new PartyResult(2,126),
+    new PartyResult(3,412), 
+    new PartyResult(4,1684)];
+  res.status(400).send(partiesList);
+});
+
+app.post("/vm/beginVoting", function (req, res) {
+  res.status(400).send({Message:"OK"});
+});
+
+app.post("/vm/endVoting", function (req, res) {
+  res.status(400).send({Message:"OK"});
+});
+
+/*
+app.post("/vm/endVoting", function (req, res) {
+  var exampleNetwork = new ExampleNetwork('admin');
+
+  exampleNetwork.init().then(function(data) {
+    return trucerts.endVoting()
+  }).then(function (data) {
+    res.status(200).json({Message: data.status})
+  }).catch(function(err) {
+    res.status(500).json({error: err.toString()})
+  })
+});
+*/
 
 var server = app.listen(8081, function () {
   var port = server.address().port;
@@ -70,14 +111,14 @@ var server = app.listen(8081, function () {
 });
 
 class Candidate {
-  constructor(id, name, surname, age, party, listNumber, numberOnList) {
-    this.id = id;
-    this.name = name;
-    this.surname = surname;
-    this.age = age;
+  constructor(candidateId, firstName, lastName, party, listNo, age, noOnList) {
+    this.candidateId = candidateId;
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.party = party;
-    this.listNumber = listNumber;
-    this.numberOnList = numberOnList;
+    this.listNo = listNo;
+    this.age = age;
+    this.noOnList = noOnList;
   }
 }
 
@@ -93,3 +134,18 @@ class Voter {
   }
 }
 
+class CandidateResult {
+  constructor(candidateId, votes) {
+    this.candidateId = candidateId;
+    this.votes = votes;
+  }
+}
+
+class PartyResult {
+  constructor(party, votes) {
+    this.party = party;
+    this.votes = votes;
+  }
+}
+
+/* https://www.skcript.com/svr/setting-up-restful-api-server-for-hyperledger-fabric-with-nodejs-sdk/ */
