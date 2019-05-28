@@ -24,6 +24,23 @@ app.get("/vm/getVote/:tokenId", function (req, res) {
   
 });
 
+/*
+app.get("/vm/getVote/:tokenId", function (req, res) {
+  var exampleNetwork = new ExampleNetwork('admin');
+
+  var tokenId = req.body.tokenId;
+  var candidateId = req.body.candidateId;
+
+  exampleNetwork.init().then(function(data) {
+    return trucerts.getVote(req.params.tokenId)
+  }).then(function (data) {
+    res.status(200).json({Message: data.status})
+  }).catch(function(err) {
+    res.status(500).json({error: err.toString()})
+  })
+});
+*/
+
 app.post("/vm/vote", function (req, res) {
   var tokenId = req.body.tokenId;
   var candidateId = req.body.candidateId;
@@ -51,6 +68,23 @@ app.post("/vm/vote", function (req, res) {
   }
 });
 
+/*
+app.post("/vm/vote", function (req, res) {
+  var exampleNetwork = new ExampleNetwork('admin');
+
+  var tokenId = req.body.tokenId;
+  var candidateId = req.body.candidateId;
+
+  exampleNetwork.init().then(function(data) {
+    return trucerts.vote(candidateId, tokenId)
+  }).then(function (data) {
+    res.status(200).json({Message: data.status})
+  }).catch(function(err) {
+    res.status(500).json({error: err.toString()})
+  })
+});
+*/
+
 app.get("/vm/getCandidates", function (req, res) {
   var candidateList = [
     new Candidate(565, "Daniel", "Gildenlow", "Bestest Party", 1, 45, 1), 
@@ -65,6 +99,20 @@ app.get("/vm/getCandidates", function (req, res) {
   res.status(400).send(candidateList);
 });
 
+/*
+app.get("/vm/getCandidates", function (req, res) {
+  var exampleNetwork = new ExampleNetwork('admin');
+
+  exampleNetwork.init().then(function(data) {
+    return trucerts.getCandidates()
+  }).then(function (data) {
+    res.status(200).json({Message: data.status})
+  }).catch(function(err) {
+    res.status(500).json({error: err.toString()})
+  })
+});
+*/
+
 app.get("/vm/getResultsByCandidates", function (req, res) {
   var candidateList = [
     new CandidateResult(1,14), 
@@ -73,6 +121,20 @@ app.get("/vm/getResultsByCandidates", function (req, res) {
     new CandidateResult(4,154)];
   res.status(400).send(candidateList);
 });
+
+/*
+app.get("/vm/getResultsByCandidates", function (req, res) {
+  var exampleNetwork = new ExampleNetwork('admin');
+
+  exampleNetwork.init().then(function(data) {
+    return trucerts.getResultsByCandidates()
+  }).then(function (data) {
+    res.status(200).json({Message: data.status})
+  }).catch(function(err) {
+    res.status(500).json({error: err.toString()})
+  })
+});
+*/
 
 app.get("/vm/getResultsByParties", function (req, res) {
   var partiesList = [
@@ -83,9 +145,37 @@ app.get("/vm/getResultsByParties", function (req, res) {
   res.status(400).send(partiesList);
 });
 
+/*
+app.get("/vm/getResultsByParties", function (req, res) {
+  var exampleNetwork = new ExampleNetwork('admin');
+
+  exampleNetwork.init().then(function(data) {
+    return trucerts.getResultsByParties()
+  }).then(function (data) {
+    res.status(200).json({Message: data.status})
+  }).catch(function(err) {
+    res.status(500).json({error: err.toString()})
+  })
+});
+*/
+
 app.post("/vm/beginVoting", function (req, res) {
   res.status(400).send({Message:"OK"});
 });
+
+/*
+app.post("/vm/beginVoting", function (req, res) {
+  var exampleNetwork = new ExampleNetwork('admin');
+
+  exampleNetwork.init().then(function(data) {
+    return trucerts.beginVoting()
+  }).then(function (data) {
+    res.status(200).json({Message: data.status})
+  }).catch(function(err) {
+    res.status(500).json({error: err.toString()})
+  })
+});
+*/
 
 app.post("/vm/endVoting", function (req, res) {
   res.status(400).send({Message:"OK"});
